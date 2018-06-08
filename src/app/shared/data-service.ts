@@ -1,6 +1,6 @@
 import {IApiService} from './api-service';
 import {Observable} from 'rxjs/Observable';
-import {ReplaySubject} from 'rxjs/ReplaySubject';
+import {Subject} from 'rxjs/Subject';
 import {EmptyError, HttpError} from './errors/http-error';
 import {IModel} from './models/model';
 import {IData} from './data';
@@ -27,17 +27,17 @@ export abstract class DataService<T extends IModel> implements IDataService {
      */
     error$: Observable<any>;
 
-    protected dataSubject: ReplaySubject<T[]>;
-    protected errorSubject: ReplaySubject<any>;
+    protected dataSubject: Subject<T[]>;
+    protected errorSubject: Subject<any>;
     protected apiService: IApiService;
 
     constructor(private modelType: {new(): T }, service: IApiService) {
         console.log('Got a new DataService here!');
         this.apiService = service;
         this.model = this.newModel();
-        this.dataSubject = new ReplaySubject<T[]>(1);
+        this.dataSubject = new Subject<T[]>();
         this.data$ = this.dataSubject.asObservable();
-        this.errorSubject = new ReplaySubject<HttpError | EmptyError>(1);
+        this.errorSubject = new Subject<HttpError | EmptyError>();
         this.error$ = this.errorSubject.asObservable();
     }
 
