@@ -1,11 +1,11 @@
 ## Excercises
 
-### Before starting: Fork and install this repository.
+### Before starting: clone and install this repository.
 
 Fork this repository in github and clone your fork on your local machine. 
 
-Before installing the node_modules, be sure to use a recent enough node/npm version. 
-This was tested with node version 8.6.0 and npm 5.6.0.
+Before installing the node_modules, be sure to use a compatible node/npm version. 
+This installation was tested with node version 8.6.0 and npm 5.6.0.
 
 Run `npm install` and `npm test` to check that the installation was successful. 
 
@@ -23,7 +23,7 @@ from the README.md, create a new `ListableModel` class and extend it with `BaseM
 ### Task 2 (moderate) Build a `search` module and a search component to filter items.
  
 1) Extend the `DataService` `fetch` method to be able to filter $data through the
- `options` parameter. For example, the options parameter could like this:
+ `options` parameter. For example, the options parameter could look like this:
  
  ```typescript
 interface FetchOptions {
@@ -50,10 +50,9 @@ similar way as with `ColumnDef` for the `ListComponent`.
 
 2) In the `ContractList` component, create a `filterDefs: FilterDef[]` list, with
 definitions for `name` and `customer` (... to filter customers, it's enough to use
-the customer's. `_title`. 
+the customer's. `_title`.) 
 
 3) Expand the search-component to use this `columnDef` to select between the available
 filters (by name or by customer) and filter data accordingly.
 
- 
 

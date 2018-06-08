@@ -64,12 +64,12 @@ export interface IDataService {
 }
 ```
 
-The `DataService` constructor becomes a model's constructor:
+The `DataService` constructor takes a model's constructor function as parameter:
 
 `modelType: {new(): T}`, 
 
 which will be used by the `newModel()` method to create new model instances. 
-As second parameter, it becomes the service implementing `IApiService`:
+As second parameter, it takes the service implementing `IApiService`:
 
 ```typescript
 abstract class DataService<T extends IModel> implements IDataService {
@@ -101,7 +101,7 @@ Q. Why do we need this proxy between our services and the HttpClient?
 
 A. Well, we don't really _need_ it, but it makes it really easy to just swap the 
 service used by the `DataService` to retrieve the data. Also using different backends
-for some components should be no problem with this architecture, and Stuff like 
+for some components should be no problem with this architecture, and stuff like 
 using fixtures, writing tests, etc. should get easier ... at least in theory ;-)
 
 All methods to retrieve or send data should become the following parameters:
@@ -172,7 +172,7 @@ ngOnInit() {
 
 ... we would only define the column's key and the method would take care of
  setting the column's header to the corresponding field's name per default, if
- no header was specified. Later on, we can also add support for adding URL to
+ no header was specified. Later on, we can also add support for adding a URL to
  a model's detail view.
 
 ```typescript
